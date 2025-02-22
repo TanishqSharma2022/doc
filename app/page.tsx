@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <div className="flex flex-col min-h-screen w-full items-center justify-center">
+      <div className="flex p-12 flex-col h-[1344px] min-h-screen w-full items-center justify-center">
         <div className="mx-auto flex text-center flex-col items-center justify-center  max-w-[390px] xs:max-w-[350px] sm:max-w-[600px] md:max-w-[808px] lg:max-w-[850px] space-y-6 md:space-y-8">
 
         
@@ -27,7 +27,9 @@ export default function Home() {
           <div className="flex mt-6 items-center justify-center gap-4">
             <Button className="py-3xl label-lg-medium px-4xl" leftIcon={<CircleFadingPlus size={15} />}>Get Started</Button>
             <Button className="py-3xl label-lg-medium px-4xl text-fg-default " variant={'secondary'} rightIcon={<MoveRight />}>What's EFX Design?</Button>
-          
+          </div>
+          <div className="w-full mt-12 bg-[#D9D9D9] rounded-md min-h-[700px]">
+
           </div>
       </div>
     </>

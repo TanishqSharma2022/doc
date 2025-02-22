@@ -28,7 +28,7 @@ const getButtonVariants = (buttonType: 'brand' | 'neutral' | 'error' = 'brand') 
             variants: {
                 variant: {
                     default: "bg-fill-default text-fg-inverted shadow-xs hover:bg-fill-strong active:ring-1 active:ring-neutral-700 disabled:bg-fill-disabled disabled:text-fg-disabled",
-                    secondary: "bg-fill-base text-fg-default border border-border-subtle hover:text-fg-strong hover:bg-fill-subtle active:ring-1 active:ring-neutral-600 disabled:bg-fill-disabled disabled:text-fg-disabled",
+                    secondary: "bg-fill-base effects-shadow-5 text-fg-default border border-border-subtle hover:text-fg-strong hover:bg-fill-subtle active:ring-1 active:ring-neutral-600 disabled:bg-fill-disabled disabled:text-fg-disabled",
                     link: "text-fg-default hover:text-fg-strong  active:text-fg-default [&_*]:fg-neutral-default [&:hover_*]:fg-neutral-strong disabled:text-fg-disabled [&_*]:disabled:bg-fill-disabled",
                 },
             },

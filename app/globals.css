@@ -280,6 +280,9 @@ body {
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
 }
 
+@utility effects-shadow-5{
+  box-shadow: 0px 1px 2px 0px #0407120D;
+}
 @utility effects-shadow-12 {
   box-shadow: 0 25px 50px rgba(15, 23, 42, 0.12);
 }
