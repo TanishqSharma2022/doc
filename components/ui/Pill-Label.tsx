@@ -89,7 +89,7 @@ const PillLabel = ({
                     <span className="text-sm-medium text-fg-default">{innerPill.text}</span>
                 </div>
             )}
-            <span className="label-md-medium font-semibold text-fg-weak">{text}</span>
+            <span className="label-md-medium  text-fg-weak">{text}</span>
         </div>
     );
 };

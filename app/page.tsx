@@ -1,8 +1,39 @@
 import Card from "@/components/Card";
 import { Button } from "@/components/ui/Button";
 import { PillLabel } from "@/components/ui/Pill-Label";
-import { Activity, CircleArrowUp, CircleFadingArrowUp, CircleFadingPlus, MoveRight } from "lucide-react";
+import { Activity, ArrowRight, CircleArrowUp, CircleFadingArrowUp, CircleFadingPlus, MoveRight } from "lucide-react";
 
+
+const cardData = [
+  {
+    id: 1,
+    title: "Predesign",
+    description: "Stop cloning beautiful designs, ship high value project with powerful digital experience to drive engagement.",
+    image: "",
+    link: ""
+  },
+  {
+    id: 2,
+    title: "Design System",
+    description: "Stop cloning beautiful designs, ship high value project with powerful digital experience to drive engagement.",
+    image: "",
+    link: ""
+  },
+  {
+    id: 3,
+    title: "UI UX Suites",
+    description: "Stop cloning beautiful designs, ship high value project with powerful digital experience to drive engagement.",
+    image: "",
+    link: ""
+  },
+  {
+    id: 4,
+    title: "Handoff",
+    description: "Stop cloning beautiful designs, ship high value project with powerful digital experience to drive engagement.",
+    image: "",
+    link: ""
+  },
+]
 
 export default function Home() {
   return (
@@ -28,25 +59,31 @@ export default function Home() {
           </div>
           <div className="flex mt-[24px] items-center justify-center gap-4">
             <Button className="py-3xl label-lg-medium px-4xl " leftIcon={<CircleFadingPlus size={15} />}>Get Started</Button>
-            <Button className="py-3xl label-lg-medium px-4xl text-fg-default bg-white border border-neutral-300 hover:bg-none  shadow-effects-5" rightIcon={<MoveRight />}>What{"'"}s EFX Design?</Button>
+            <Button className="py-3xl label-lg-medium px-4xl text-fg-default bg-white border border-neutral-300 hover:bg-neutral-100  shadow-effects-5" rightIcon={<ArrowRight />}>What{"'"}s EFX Design?</Button>
           </div>
           <div className="w-full mt-12 bg-[#D9D9D9] rounded-md min-h-[700px]">
           </div>
         </div>
       </div>
-      <div className=" border border-[1px] border-neutral-200 w-full px-[48px] grid grid-cols-2 place-items-center justify-center ">
+      <div className=" border border-[1px] border-neutral-200 w-full px-[48px] grid grid-cols-1 md:grid-cols-2 place-items-center justify-center ">
+        {
+          cardData.map((card) => {
+            return (
+                <div key={card.id} className="py-[32px] px-[64px] border  border-[1px] border-neutral-200 w-full">
+                  <Card card={card} />
+                </div>
+            )
+          })
+        }
+        {/* <div className="py-[32px] px-[64px] border border-[1px] border-neutral-200 w-full">
+          <Card />
+        </div>
         <div className="py-[32px] px-[64px] border  border-[1px] border-neutral-200 w-full">
           <Card />
         </div>
         <div className="py-[32px] px-[64px] border border-[1px] border-neutral-200 w-full">
           <Card />
-        </div>
-        <div className="py-[32px] px-[64px] border  border-[1px] border-neutral-200 w-full">
-          <Card />
-        </div>
-        <div className="py-[32px] px-[64px] border border-[1px] border-neutral-200 w-full">
-          <Card />
-        </div>
+        </div> */}
 
       </div>
       <div className=" px-[48px]">
