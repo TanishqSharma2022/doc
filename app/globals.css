@@ -21,6 +21,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 } */
 
+
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/public/Inter.ttf') format('ttf'),
+       url('/public/Inter.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 @theme { 
     --color-basewhite-100: rgba(255, 255, 255);
     --color-basewhite-98: rgba(255, 255, 255, 0.98);
