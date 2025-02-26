@@ -5,8 +5,8 @@ import { Activity, ChevronDown, CircleFadingArrowUp, CircleFadingPlus } from "lu
 import { useState } from "react";
 export default function Updates() {
     return (
-        <div className=" px-[48px] min-h-screen">
-            <div className="flex items-center border border-border-subtle  justify-center flex-col py-[96px] px-[20px]">
+        <div className=" px-[49px] min-h-screen">
+            <div className="flex items-center border border-border-subtle border-t-[0px] justify-center flex-col py-[96px] px-[20px]">
 
                 <h1 className="label-md-medium text-fg-weak font-inter flex items-center justify-center gap-2"><Activity size={20} />Updates & Upcomings</h1>
                 <h1 className="display-md-bold text-fg-strong font-inter mt-[12px]" >Latest and upcoming capabilities</h1>
