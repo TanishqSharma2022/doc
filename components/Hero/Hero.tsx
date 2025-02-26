@@ -9,21 +9,21 @@ const cardData = [
         title: "Cxful Design System",
         description: "Stop cloning beautiful designs, ship high value project with powerful",
         image: "",
-        link: "/docs/cxful-design-system"
+        link: "docs/cxful-design-system/design-system/overview"
     },
     {
         id: 2,
         title: "UIUX Design Kit",
         description: "Stop cloning beautiful designs, ship high value project with powerful",
         image: "",
-        link: ""
+        link: "/docs/uiux-suites/development-guides/overview"
     },
     {
         id: 3,
         title: "Development Sync",
         description: "Stop cloning beautiful designs, ship high value project with powerful",
         image: "",
-        link: ""
+        link: "#"
     },
 ]
 
