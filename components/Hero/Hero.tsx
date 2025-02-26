@@ -1,7 +1,5 @@
-import { ArrowRight, CircleArrowUp, CircleFadingPlus } from "lucide-react";
-import { PillLabel } from "../ui/Pill-Label";
+import { ArrowRight, CircleFadingPlus } from "lucide-react";
 import { Button } from "../ui/Button";
-import CardSection from "./CardSection";
 import Card from "../Card";
 
 
@@ -64,7 +62,7 @@ export default function Hero() {
                             cardData.map((card) => {
                                 return (
                                     <div key={card.id} className="p-[32px]  w-full  border-b-[0px]  border-border-subtle ">
-                                        <Card card={card} />
+                                        <Card {...card} />
                                     </div>
                                 )
                             })

@@ -1,10 +1,8 @@
 "use client"
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Activity, ArrowDown, ChevronDown, CircleFadingArrowUp, CircleFadingPlus } from "lucide-react";
+import { Activity, ChevronDown, CircleFadingArrowUp, CircleFadingPlus } from "lucide-react";
 import { useState } from "react";
-import { Button } from "../ui/Button";
-
 export default function Updates() {
     return (
         <div className=" px-[48px] min-h-screen">

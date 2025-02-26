@@ -62,7 +62,6 @@ interface PillLabelProps
 
 const PillLabel = ({
     text,
-    leftIcon,
     innerPill,
     variant,
     className,

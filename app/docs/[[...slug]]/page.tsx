@@ -9,7 +9,6 @@ export default async function Doc(props: PageProps) {
 
     const { slug = [] } = params;
 
-    const pathName = slug.join("/");
     return (
         <div>
 

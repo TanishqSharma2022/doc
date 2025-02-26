@@ -1,6 +1,14 @@
 import { ArrowUpRight, CircleDashed } from "lucide-react";
 
-export default function Card({ card }: any) {
+
+interface CardProps {
+    title: string,
+    description: string,
+
+}
+
+
+export default function Card(card : CardProps) {
     return (
         <>
             <div className="p-[8px] border w-fit mx-auto effects-shadow-10  border-[1px] border-border-subtle rounded-md">

@@ -40,7 +40,7 @@ export default function CardSection() {
                 cardData.map((card) => {
                     return (
                         <div key={card.id} className="py-[32px] px-[64px] border  border-[1px] border-neutral-200 w-full">
-                            <Card card={card} />
+                            <Card {...card} />
                         </div>
                     )
                 })

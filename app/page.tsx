@@ -1,4 +1,3 @@
-import CardSection from "@/components/Hero/CardSection";
 import Hero from "@/components/Hero/Hero";
 import Updates from "@/components/Hero/Updates";
 
