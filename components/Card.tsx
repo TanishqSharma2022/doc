@@ -1,9 +1,11 @@
 import { ArrowUpRight, CircleDashed } from "lucide-react";
+import Link from "next/link";
 
 
 interface CardProps {
     title: string,
     description: string,
+    link: string
 
 }
 
@@ -24,7 +26,10 @@ export default function Card(card : CardProps) {
                 </div>
                 <div className="flex text-fg-weak text-sm-regular items-center  p-[8px] justify-between">
                     <span className="max-w-[300px]">{card.description}</span>
+                    
+                    <Link href={card.link} target="_blank"> 
                     <button className="effects-shadow-5 hover:bg-border-subtle cursor-pointer rounded-[6px] border border-border-subtle p-[10px]"><ArrowUpRight /></button>
+                    </Link>
                 </div>
             </div>
 

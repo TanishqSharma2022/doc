@@ -1953,7 +1953,6 @@ body {
   /* 133.333% */
 }
 
-
 @layer components {
   .effects-shadow-10 {
     box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);

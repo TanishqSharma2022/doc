@@ -9,7 +9,7 @@ const cardData = [
         title: "Cxful Design System",
         description: "Stop cloning beautiful designs, ship high value project with powerful",
         image: "",
-        link: ""
+        link: "/docs/cxful-design-system"
     },
     {
         id: 2,
