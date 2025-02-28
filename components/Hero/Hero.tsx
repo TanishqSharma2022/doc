@@ -23,7 +23,7 @@ const cardData = [
         title: "Development Sync",
         description: "Stop cloning beautiful designs, ship high value project with powerful",
         image: "",
-        link: "#"
+        link: "/docs/development-sync/development-guides/overview"
     },
 ]
 
@@ -41,8 +41,15 @@ export default function Hero() {
                             <span className="display-md-medium">Design & Handoff Guides</span>
                         </p>
                         <div className="flex mt-[24px] items-center justify-center gap-4">
-                            <Button className="py-3xl label-lg-medium px-4xl " leftIcon={<CircleFadingPlus size={15} />}>Upgrade your design</Button>
-                            <Button className="py-3xl label-lg-medium px-4xl text-fg-default bg-white border border-border-subtle hover:bg-neutral-100  shadow-effects-5" rightIcon={<ArrowRight size={20} />}>Getting Started</Button>
+                            <Button
+                                className="py-3xl label-lg-medium px-4xl"
+                                buttonType="brand"
+                                variant={'default'}
+                                leftIcon={<CircleFadingPlus size={15} />}>Upgrade your design</Button>
+                            <Button
+                                buttonType="neutral"
+                                variant={'secondary'}
+                                rightIcon={<ArrowRight size={20} />}>Getting Started</Button>
                         </div>
                         <p className="mx-auto text-lg-regular text-text-lg text-fg-default mx-auto ">Every bits and pixel of custom & headless experience design. Navigate, and implement yourself or with the whole team.</p>
                     </div>

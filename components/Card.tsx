@@ -1,5 +1,6 @@
 import { ArrowUpRight, CircleDashed } from "lucide-react";
 import Link from "next/link";
+import { Icon } from "./ui/IconButton";
 
 
 interface CardProps {
@@ -10,7 +11,7 @@ interface CardProps {
 }
 
 
-export default function Card(card : CardProps) {
+export default function Card(card: CardProps) {
     return (
         <>
             <div className="p-[8px] border w-fit mx-auto effects-shadow-10  border-[1px] border-border-subtle rounded-md">
@@ -26,9 +27,14 @@ export default function Card(card : CardProps) {
                 </div>
                 <div className="flex text-fg-weak text-sm-regular items-center  p-[8px] justify-between">
                     <span className="max-w-[300px]">{card.description}</span>
-                    
-                    <Link href={card.link} target="_blank"> 
-                    <button className="effects-shadow-5 hover:bg-border-subtle cursor-pointer rounded-[6px] border border-border-subtle p-[10px]"><ArrowUpRight /></button>
+
+                    <Link href={card.link} target="_blank">
+                    <Icon 
+                        variant={"secondary"}
+                        icon={<ArrowUpRight size={30} />}
+                        iconType="neutral"
+
+                    />
                     </Link>
                 </div>
             </div>

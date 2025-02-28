@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Activity, ChevronDown, CircleFadingArrowUp, CircleFadingPlus } from "lucide-react";
 import { useState } from "react";
+import { RoadmapModal } from "../RoadmapPopup";
 export default function Updates() {
     return (
         <div className=" px-[49px] min-h-screen">
@@ -20,19 +21,27 @@ export default function Updates() {
     )
 }
 
-const Card = () => {
+const Card = ({ data, index }) => {
+    const [selectedFeature, setSelectedFeature] = useState<number | null>(null)
+    // const data = {updates: ""}
     return (
         <div className="flex relative mt-12 items-center backdrop-blur-sm bg-white  p-[8px] min-w-[480px] w-fit gap-[8px] font-inter mx-auto  shadow-sm justify-center">
             <img src="#" className="min-w-[320px] h-[200px] bg-neutral-200 rounded-[12px]" />
             <div className=" flex flex-col items-start  px-[8px] py-[16px] h-[200px] relative  justify-between w-full h-[full]">
                 <div className="flex flex-col gap-[8px] ">
 
-                    <h1 className="text-fg-default  display-sm-semibold font-inter">Design System</h1>
-                    <p className="text-xs-regular w-[344px]">Instead of 1000s of color & size variations, it has every possible component. Instead of 1000s of color & size variations.</p>
+                    <h1 className="text-fg-default  display-sm-semibold font-inter">{data.title}</h1>
+                    <p className="text-xs-regular w-[344px]">{data.description}</p>
                 </div>
-                <button className="effects-shadow-5 hover:bg-border-subtle border-border-subtle border rounded-md p-[10px] cursor-pointer "><CircleFadingPlus size={20} /></button>
+                <button
+                    onClick={() => setSelectedFeature(index)}
+                    className="effects-shadow-5 hover:bg-border-subtle border-border-subtle border rounded-md p-[10px] cursor-pointer ">
+                    <CircleFadingPlus size={20} />
+                </button>
 
             </div>
+            <RoadmapModal isOpen={selectedFeature !== null}
+                onClose={() => setSelectedFeature(null)} data={selectedFeature !== null ? data : null} />
         </div>
     )
 }
@@ -69,10 +78,10 @@ const CardStack = () => {
     return (
         <div className={`${isOpen ? "min-h-[1400px]" : "min-h-[600px]"} mx-auto  w-full items-center justify-center p-8`}>
             <div className=" w-full mx-auto">
-                <Card />
+                <Card data={cards[0]} index={0} />
                 <div className="relative  h-[300px] perspective">
                     <AnimatePresence>
-                        {cards.map((card, index) => {
+                        {cards.slice(1, -1).map((card, index) => {
                             return (<motion.div
                                 key={card.title}
                                 initial={{
@@ -105,7 +114,7 @@ const CardStack = () => {
                                     transform: `translate3d(0, ${index * 4}px, ${-index * 10}px)`,
                                 }}
                             >
-                                <Card />
+                                <Card data={card} index={index + 1} />
                             </motion.div>)
 
 

@@ -129,11 +129,51 @@ const data: Record<string, CategoryData> = {
             },
         ],
     },
+    devsync: {
+        title: "Development Sync",
+        slug: "development-sync",
+        sections: [
+            {
+                title: "Development Guides",
+                slug: "development-guides",
+                pages: [
+                    { title: "Overview", slug: "overview", icon: <Fingerprint size={20} /> },
+                    { title: "How it works", slug: "how-it-works", icon: <Fingerprint size={20} /> },
+                ],
+            },
+            {
+                title: "Handoff",
+                slug: "handoff",
+                pages: [
+                    { title: "Overview", slug: "handoff-overview", icon: <Fingerprint size={20} /> },
+                    { title: "Design Tokens", slug: "design-tokens", icon: <Fingerprint size={20} /> },
+                    { title: "Dimensions - Spacing", slug: "dimensions-spacing", icon: <Fingerprint size={20} /> },
+                    { title: "Layouts & Grids", slug: "layouts-and-grids", icon: <Fingerprint size={20} /> },
+                    { title: "Assets & Icons", slug: "assets-and-icons", icon: <Fingerprint size={20} /> },
+                    { title: "Accessibility", slug: "accessibility", icon: <Fingerprint size={20} /> },
+                    { title: "Components", slug: "components", icon: <Fingerprint size={20} /> },
+                ],
+            },
+            {
+                title: "Headless Starter",
+                slug: "headless-starter",
+                pages: [
+                    { title: "UI Modules", slug: "ui-modules", icon: <Fingerprint size={20} /> },
+                    { title: "UI Sections", slug: "ui-sections", icon: <Fingerprint size={20} /> },
+                    { title: "Website Experience", slug: "website-experience", icon: <Fingerprint size={20} /> },
+                    { title: "Content Experience", slug: "content-experience", icon: <Fingerprint size={20} /> },
+                    { title: "Commerce Experience", slug: "commerce-experience", icon: <Fingerprint size={20} /> },
+                ],
+            },
+        ],
+    },
+    
 }
 
 const categories: Category[] = [
     { title: "Cxful Design System", slug: "cxful-design-system", initialPageSlug: "design-system" },
     { title: "UIUX Suites", slug: "uiux-suites", initialPageSlug: "development-guides" },
+    { title: "Development Sync", slug: "development-sync", initialPageSlug: "development-guides" },
 ];
 
 export default function Sidebar() {
