@@ -1,6 +1,8 @@
 import { ArrowRight, CircleFadingPlus } from "lucide-react";
 import { Button } from "../ui/Button";
 import Card from "../Card";
+import { sanityFetch } from "@/sanity/lib/client";
+import { categoryCardQuery, categoryWithHeadingsQuery } from "@/sanity/lib/queries";
 
 
 const cardData = [
@@ -28,7 +30,9 @@ const cardData = [
 ]
 
 
-export default function Hero() {
+export default async function Hero() {
+    const data = await sanityFetch({query: categoryCardQuery})
+    console.log(data)
     return (
         <>
             <div className="flex border border-[1px] border-border-subtle  px-[48px] flex-col  w-full items-center justify-center">
@@ -62,9 +66,9 @@ export default function Hero() {
 
                     <div className="grid grid-cols-1 border border-t-[0px] border-b-[0px] md:grid-cols-3 divide-x-[1px]  place-items-center justify-center ">
                         {
-                            cardData.map((card) => {
+                            data.map((card) => {
                                 return (
-                                    <div key={card.id} className="p-[32px]  w-full  border-b-[0px]  border-border-subtle ">
+                                    <div key={card._id} className="p-[32px]  w-full  border-b-[0px]  border-border-subtle ">
                                         <Card {...card} />
                                     </div>
                                 )

@@ -73,15 +73,15 @@ const CardStack = () => {
     ]
 
     // Calculate the position for the button when cards are open
-    const buttonPositionY = isOpen ? `${cards.length * 300}%` : 0;
+    const buttonPositionY = isOpen ? `${cards.length * 250}%` : 0;
 
     return (
-        <div className={`${isOpen ? "min-h-[1400px]" : "min-h-[600px]"} mx-auto  w-full items-center justify-center p-8`}>
-            <div className=" w-full mx-auto">
+        <div className={`${isOpen ? "min-h-[1200px]" : "min-h-[600px]"} mx-auto w-full items-center justify-center p-8`}>
+            <div className="  w-full mx-auto">
                 <Card data={cards[0]} index={0} />
-                <div className="relative  h-[300px] perspective">
+                <div className="relative   h-[300px] perspective">
                     <AnimatePresence>
-                        {cards.slice(1, -1).map((card, index) => {
+                        {cards.slice(1).map((card, index) => {
                             return (<motion.div
                                 key={card.title}
                                 initial={{
@@ -92,7 +92,7 @@ const CardStack = () => {
                                 }}
                                 animate={{
                                     opacity: 1,
-                                    y: isOpen ? `${index * 85}%` : `${index * 15}px`,
+                                    y: isOpen ? `${index * 100}%` : `${index * 15}px`,
                                     rotateX: isOpen ? "0deg" : "10deg",
                                     scale: isOpen ? 1 : 1 - index * 0.05,
                                     transition: {
@@ -108,7 +108,7 @@ const CardStack = () => {
                                         delay: (cards.length - index - 1) * 0.1,
                                     },
                                 }}
-                                className="absolute left-0 right-0 origin-top"
+                                className="absolute left-0  right-0 origin-top"
                                 style={{
                                     zIndex: cards.length - index,
                                     transform: `translate3d(0, ${index * 4}px, ${-index * 10}px)`,

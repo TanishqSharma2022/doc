@@ -167,7 +167,7 @@ const data: Record<string, CategoryData> = {
             },
         ],
     },
-    
+
 }
 
 const categories: Category[] = [
@@ -176,7 +176,7 @@ const categories: Category[] = [
     { title: "Development Sync", slug: "development-sync", initialPageSlug: "development-guides" },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ data }) {
     const [activeDropdown, setActiveDropdown] = useState<Category>(categories[0]);
     const router = useRouter();
 
@@ -204,7 +204,7 @@ export default function Sidebar() {
             </DropdownMenu>
 
             <nav className="mt-6">
-                <SideBarEntries dataList={data[activeDropdown.slug === "cxful-design-system" ? "cxful" : "uiux"]} />
+                <SideBarEntries data={data} />
             </nav>
         </aside>
     );
@@ -214,23 +214,21 @@ interface SidebarEntriesProps {
     dataList: CategoryData;
 }
 
-const SideBarEntries: React.FC<SidebarEntriesProps> = ({ dataList }) => {
-    const pathName = usePathname();
-
+const SideBarEntries = ({ data }) => {
+    const pathName = usePathname()
     return (
         <>
-            {dataList.sections.map((section) => (
-                <div key={section.slug}>
-                    <h1 className="title-xs-semibold text-fg-strong mb-[16px]">{section.title}</h1>
-                    {section.pages.map((page) => {
-                        const link = `/docs/${dataList.slug}/${section.slug}/${page.slug}`;
+            {data.headings.map((heading) => (
+                <div key={heading.slug}>
+                    <h1 className="title-xs-semibold text-fg-strong mb-[16px]">{heading.title}</h1>
+                    {heading.pages.map((page) => {
+                        const link = `/docs/${data.slug}/${heading.slug}/${page.slug}`;
                         return (
                             <Link
                                 key={page.slug}
                                 href={link}
-                                className={`hover:bg-fill-subtle px-[8px] py-[8px] rounded-lg mb-[8px] flex items-center justify-between gap-2 label-sm-medium text-fg-strong ${
-                                    pathName === link ? "bg-fill-subtle effects-shadow-5" : ""
-                                }`}
+                                className={`hover:bg-fill-subtle px-[8px] py-[8px] rounded-lg mb-[8px] flex items-center justify-between gap-2 label-sm-medium text-fg-strong ${pathName === link ? "bg-fill-subtle effects-shadow-5" : ""
+                                    }`}
                             >
                                 <div className="flex items-center gap-2">
                                     <span className="w-[20px] h-[20px] flex items-center justify-center rounded-md bg-fill-default text-white p-[6px]">
