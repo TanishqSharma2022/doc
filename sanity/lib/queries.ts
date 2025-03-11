@@ -78,12 +78,32 @@ export const categoryWithFullStructureQuery = `
         _id,
         title,
         "slug": slug.current,
-        subpages[]->{
+      },
+       subheadings[]->{
           _id,
           title,
-          "slug": slug.current
-        }
+          "slug": slug.current,
+          pages[]->{
+        _id,
+        title,
+        "slug": slug.current,
+        
       }
+        }
     }
   }
 `;
+
+
+export const pageContentQuery = defineQuery(`
+  *[
+  _type == "page" &&
+  (
+    heading->slug.current == $headingSlug ||
+    subheading->slug.current == $subheadingSlug
+  ) &&
+  slug.current == $pageSlug
+][0]{
+  content
+}
+  `)

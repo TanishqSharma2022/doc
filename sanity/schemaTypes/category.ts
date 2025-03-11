@@ -62,6 +62,44 @@ export const heading = defineType({
       title: 'Category',
       to: [{ type: 'category' }],
     }),
+    
+    defineField({
+      name: 'pages',
+      type: 'array',
+      title: 'Pages',
+      of: [{ type: 'reference', to: [{ type: 'page' }] }],
+    }),
+    defineField({
+      name: 'subheadings',
+      type: 'array',
+      title: 'Subheadings',
+      of: [{ type: 'reference', to: [{ type: 'subheading' }] }],
+    }),
+  ],
+})
+
+export const subheading = defineType({
+  name: 'subheading',
+  title: 'Subheading',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'title',
+      type: 'string',
+      title: 'Title',
+    }),
+    defineField({
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      options: { source: 'title', maxLength: 96 },
+    }),
+    defineField({
+      name: 'heading',
+      type: 'reference',
+      title: 'Heading',
+      to: [{ type: 'heading' }],
+    }),
     defineField({
       name: 'pages',
       type: 'array',
@@ -88,47 +126,16 @@ export const page = defineType({
       options: { source: 'title', maxLength: 96 },
     }),
     defineField({
+      name: 'subheading',
+      type: 'reference',
+      title: 'Subheading',
+      to: [{ type: 'subheading' }],
+    }),
+    defineField({
       name: 'heading',
       type: 'reference',
       title: 'Heading',
       to: [{ type: 'heading' }],
-    }),
-    defineField({
-      name: 'content',
-      type: 'array',
-      title: 'Content',
-      of: [{ type: 'block' }],
-    }),
-    defineField({
-      name: 'subpages',
-      type: 'array',
-      title: 'Subpages',
-      of: [{ type: 'reference', to: [{ type: 'subpage' }] }],
-    }),
-  ],
-})
-
-export const subpage = defineType({
-  name: 'subpage',
-  title: 'Subpage',
-  type: 'document',
-  fields: [
-    defineField({
-      name: 'title',
-      type: 'string',
-      title: 'Title',
-    }),
-    defineField({
-      name: 'slug',
-      type: 'slug',
-      title: 'Slug',
-      options: { source: 'title', maxLength: 96 },
-    }),
-    defineField({
-      name: 'page',
-      type: 'reference',
-      title: 'Parent Page',
-      to: [{ type: 'page' }],
     }),
     defineField({
       name: 'content',
