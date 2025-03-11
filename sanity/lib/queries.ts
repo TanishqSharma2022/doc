@@ -7,7 +7,11 @@ export const categoryCardQuery = defineQuery(`
      description,
      logo,
        "slug": slug.current,
-      headings[0]->{"slug":slug.current}
+      headings[0]->{
+      "slug":slug.current,
+       pages[0]->{"slug":slug.current}
+      },
+      
    }`)
 
 export const categoryWithHeadingsQuery = defineQuery(`
@@ -107,3 +111,19 @@ export const pageContentQuery = defineQuery(`
   content
 }
   `)
+
+
+
+  export const HeroContentQuery = defineQuery(`*[_type == "hero"][0] {
+  heading1,
+  heading2,
+  button1 {
+    text,
+    "icon": icon.asset->url
+  },
+  button2 {
+    text,
+    "icon": icon.asset->url
+  },
+  subheading
+}`);

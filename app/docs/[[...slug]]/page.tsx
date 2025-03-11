@@ -25,7 +25,7 @@ export default async function Doc(props: PageProps) {
     const { slug = [] } = params;
 
 
-    const categorySlug = slug[0];
+    // const categorySlug = slug[0];
     const headingSlug = slug[1];
     const isSubheading = slug.length === 4;
     const subheadingSlug = isSubheading ? slug[2] : null;
@@ -35,36 +35,36 @@ export default async function Doc(props: PageProps) {
         query: pageContentQuery,
         params: { headingSlug, subheadingSlug, pageSlug }
     });
-console.log(pageContent)
+    console.log(pageContent)
 
 
     return (
         <div className="flex ">
             <SidebarWrapper slug={slug} />
 
-<div>
+            <div>
 
-            <div className="p-[32px]">
-                <Breadcrumb>
-                    <BreadcrumbList>
-                        <BreadcrumbItem>
-                            <BreadcrumbLink className="text-fg-weak capitalize" >{slug[1].replaceAll('-', ' ')}</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <BreadcrumbPage className="text-fg-strong capitalize font-medium" >{slug[2]}</BreadcrumbPage>
-                        </BreadcrumbItem>
-                    </BreadcrumbList>
-                </Breadcrumb>
+                <div className="p-[32px]">
+                    <Breadcrumb>
+                        <BreadcrumbList>
+                            <BreadcrumbItem>
+                                <BreadcrumbLink className="text-fg-weak capitalize" >{slug[1].replaceAll('-', ' ')}</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbPage className="text-fg-strong capitalize font-medium" >{slug[2]}</BreadcrumbPage>
+                            </BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
+
+                </div>
+
+
+                <PortableText
+                    value={pageContent.content}
+                />
 
             </div>
-
-
-        <PortableText 
-        value={pageContent.content}
-        />
-
-        </div>
 
         </div>
 

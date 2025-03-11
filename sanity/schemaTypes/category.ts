@@ -109,6 +109,64 @@ export const subheading = defineType({
   ],
 })
 
+export const HeroContainer = defineType({
+  name: 'hero',
+  title: 'Hero',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'heading1',
+      type: 'string',
+      title: 'Heading1',
+    }),
+    defineField({
+      name: 'heading2',
+      type: 'string',
+      title: 'Heading2',
+    }),
+    
+    defineField({
+      name: "button1",
+      type: "object",
+      title: "Button 1",
+      fields: [
+        defineField({
+          name: "text",
+          type: "string",
+          title: "Button Text",
+        }),
+        defineField({
+          name: "icon",
+          type: "image",
+          title: "Icon",
+        }),
+      ],
+    }),
+    defineField({
+      name: "button2",
+      type: "object",
+      title: "Button 2",
+      fields: [
+        defineField({
+          name: "text",
+          type: "string",
+          title: "Button Text",
+        }),
+        defineField({
+          name: "icon",
+          type: "image",
+          title: "Icon",
+        }),
+      ],
+    }),
+    defineField({
+      name: 'subheading',
+      type: 'string',
+      title: 'SubHeading',
+    }),
+    
+  ],
+})
 export const page = defineType({
   name: 'page',
   title: 'Page',
