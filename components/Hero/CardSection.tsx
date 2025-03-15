@@ -8,7 +8,8 @@ const cardData = [
       title: "Predesign",
       description: "Stop cloning beautiful designs, ship high value project with powerful digital experience to drive engagement.",
       image: "",
-      link: ""
+      link: "",
+      logo: ""
     },
     {
       id: 2,
@@ -40,7 +41,7 @@ export default function CardSection() {
                 cardData.map((card) => {
                     return (
                         <div key={card.id} className="py-[32px] px-[64px] border  border-[1px] border-neutral-200 w-full">
-                            <Card {...card} />
+                            {/* <Card {...card} /> */}
                         </div>
                     )
                 })
