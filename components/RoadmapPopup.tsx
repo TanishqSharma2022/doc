@@ -1,4 +1,6 @@
 "use client"
+
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import * as Dialog from "@radix-ui/react-dialog"
 import { useEffect, useCallback } from "react"
 // import { RoadmapdialogQueryResult } from "../../sanity.types"

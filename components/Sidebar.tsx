@@ -1,12 +1,13 @@
 "use client";
 
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, ChevronRight, Fingerprint } from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { JSX, useState } from "react";
@@ -24,7 +25,7 @@ const categories: Category[] = [
     { title: "Development Sync", slug: "development-sync", initialPageSlug: "development-guides" },
 ];
 
-export default function Sidebar({ data }) {
+export default function Sidebar({ data }:any) {
     const [activeDropdown, setActiveDropdown] = useState<Category>(data);
     const router = useRouter();
 
@@ -88,7 +89,7 @@ interface SidebarEntriesProps {
 
 
 
-const SidebarLink: FC<{ link: string; page: Page; isActive: boolean }> = ({ link, page, isActive }) => (
+const SidebarLink: React.FC<{ link: string; page: Page; isActive: boolean }> = ({ link, page, isActive }) => (
     <Link
         href={link}
         className={`hover:bg-fill-subtle px-[8px] py-[8px] rounded-lg mb-[8px] flex items-center justify-between gap-2 label-sm-medium text-fg-strong ${isActive ? "bg-fill-subtle effects-shadow-5" : ""}`}
