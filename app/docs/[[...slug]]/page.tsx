@@ -48,6 +48,11 @@ export default async function Doc(props: PageProps) {
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem>
+                                <BreadcrumbLink className="text-fg-weak capitalize" >{slug[0].replaceAll('-', ' ')}</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+
+                            <BreadcrumbItem>
                                 <BreadcrumbLink className="text-fg-weak capitalize" >{slug[1].replaceAll('-', ' ')}</BreadcrumbLink>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />

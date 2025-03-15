@@ -7,11 +7,11 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { JSX, useState } from "react";
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 
 interface Category {
     title: string;
@@ -20,12 +20,12 @@ interface Category {
 }
 
 const categories: Category[] = [
-    { title: "Cxful Design System", slug: "cxful-design-system", initialPageSlug: "design-system" },
-    { title: "UIUX Suites", slug: "uiux-design-kit", initialPageSlug: "development-guides" },
+    { title: "Cxful Design System", slug: "cxful-design-system", initialPageSlug: "design-system-guides" },
+    { title: "UIUX Suites", slug: "uiux-design-kit", initialPageSlug: "uiux-design-guides" },
     { title: "Development Sync", slug: "development-sync", initialPageSlug: "development-guides" },
 ];
 
-export default function Sidebar({ data }:any) {
+export default function Sidebar({ data }: any) {
     const [activeDropdown, setActiveDropdown] = useState<Category>(data);
     const router = useRouter();
 
@@ -35,7 +35,7 @@ export default function Sidebar({ data }:any) {
     };
     return (
         <aside className="min-w-[280px] p-[32px] sticky top-16 border-border-subtle border-r min-h-screen">
-            
+
             <DropdownMenu>
                 <DropdownMenuTrigger className="min-w-[200px] label-sm-regular justify-between flex items-center gap-4 border border-border-subtle p-[12px] rounded-[12px]">
                     {activeDropdown.title} <ChevronDown size={13} />
@@ -94,13 +94,29 @@ const SidebarLink: React.FC<{ link: string; page: Page; isActive: boolean }> = (
         href={link}
         className={`hover:bg-fill-subtle px-[8px] py-[8px] rounded-lg mb-[8px] flex items-center justify-between gap-2 label-sm-medium text-fg-strong ${isActive ? "bg-fill-subtle effects-shadow-5" : ""}`}
     >
-        <div className="flex items-center gap-2">
-            <span className="w-[20px] h-[20px] flex items-center justify-center rounded-md bg-fill-default text-white p-[6px]">
+        <div className={`flex items-center gap-2 ${isActive ? "text-fg-brand-default" : ""} `}>
+            <span className={` ${isActive ? "bg-fg-brand-default" : "bg-fill-default"}   w-[20px] h-[20px] flex items-center justify-center rounded-md  text-white p-[6px]`}>
                 {page.icon}
             </span>
             {page.title}
         </div>
         {isActive && <ChevronRight size={13} />}
+    </Link>
+);
+
+
+const SubheaingSidebarLink: React.FC<{ link: string; page: Page; isActive: boolean }> = ({ link, page, isActive }) => (
+    <Link
+        href={link}
+    className={`hover:bg-fill-subtle px-[8px] py-[8px]  border-l-2 flex items-center justify-between gap-2 label-sm-medium text-fg-strong ${isActive ? "border-fg-brand-default bg-fill-subtle effects-shadow-5" : ""}`}
+    >
+        <div className={`flex items-center gap-4 ${isActive ? "text-fg-brand-default" : ""} `}>
+            {/* {!sidebar && <span className={` ${isActive ? "bg-fg-brand-default" : "bg-fill-default"}   w-[20px] h-[20px] flex items-center justify-center rounded-md  text-white p-[6px]`}>
+                {page.icon}
+            </span>} */}
+            {page.title}
+            {<ArrowRight size={13} />}
+        </div>
     </Link>
 );
 
@@ -116,7 +132,7 @@ const SidebarEntries: React.FC<SidebarEntriesProps> = ({ data }) => {
         <>
             {data.headings.map((heading) => (
                 <div key={heading.slug}>
-                    <h1 className="title-xs-semibold text-fg-strong mb-[16px]">{heading.title}</h1>
+                    <h1 className={`title-xs-semibold text-fg-strong mb-[16px] `}>{heading.title}</h1>
                     {heading.pages.map((page) => {
                         const link = `/docs/${data.slug}/${heading.slug}/${page.slug}`;
                         return <SidebarLink key={page.slug} link={link} page={page} isActive={pathName === link} />;
@@ -128,7 +144,7 @@ const SidebarEntries: React.FC<SidebarEntriesProps> = ({ data }) => {
                                 onClick={() => toggleSubheading(subheading.slug)}
                                 className="w-full flex justify-between items-center py-[8px] px-[8px] text-fg-strong label-sm-medium hover:bg-fill-subtle rounded-lg mb-[4px]"
                             >
-                                <span>{subheading.title}</span>
+                                <span className="text-bg-brand-default">{subheading.title}</span>
                                 {openSubheadings[subheading.slug] ? <ChevronDown size={13} /> : <ChevronRight size={13} />}
                             </button>
                             <motion.div
@@ -140,7 +156,7 @@ const SidebarEntries: React.FC<SidebarEntriesProps> = ({ data }) => {
                                 {openSubheadings[subheading.slug] &&
                                     subheading.pages.map((page) => {
                                         const link = `/docs/${data.slug}/${heading.slug}/${subheading.slug}/${page.slug}`;
-                                        return <SidebarLink key={page.slug} link={link} page={page} isActive={pathName === link} />;
+                                        return <SubheaingSidebarLink key={page.slug} link={link} page={page} isActive={pathName === link} />;
                                     })}
                             </motion.div>
                         </div>
