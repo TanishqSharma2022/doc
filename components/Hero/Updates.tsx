@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Activity, ChevronDown, CircleFadingArrowUp, CircleFadingPlus } from "lucide-react";
+import { Activity, ChevronDown, ChevronUp, CircleFadingArrowUp, CircleFadingPlus } from "lucide-react";
 import { useState } from "react";
 import { RoadmapModal } from "../RoadmapPopup";
 import Image from "next/image";
@@ -114,7 +114,7 @@ const CardStack: React.FC = () => {
                         onClick={() => setIsOpen(!isOpen)}
                         className="bg-white text-fg-default border mx-auto label-md-medium shadow-none flex items-center gap-4 border-none mt-8"
                     >
-                        {isOpen ? "Close" : "Full"} Roadmap <ChevronDown />
+                        {isOpen ? "Close" : "Full"} Roadmap {isOpen ? <ChevronUp /> : <ChevronDown />}
                     </button>
                 </motion.div>
             </div>
