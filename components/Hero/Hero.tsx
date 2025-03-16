@@ -10,8 +10,8 @@ import { CardProps, HeroDataProps } from "@/app/types";
 export default async function Hero() {
     const cardData = await sanityFetch({ query: categoryCardQuery })
 
-    const HeroData = await sanityFetch({query: HeroContentQuery})
-console.log(HeroData)
+    const HeroData = await sanityFetch({ query: HeroContentQuery })
+    console.log(HeroData)
     return (
         <>
 
@@ -41,7 +41,7 @@ console.log(HeroData)
 }
 
 
-const HeroContainer = (HeroData:HeroDataProps) => {
+const HeroContainer = (HeroData: HeroDataProps) => {
     return (
         <div className="flex border border-[1px] border-border-subtle  px-[48px] flex-col  w-full items-center justify-center">
             <div className="border border-[1px] border-b-[0px] border-border-subtle  w-full h-full">

@@ -28,7 +28,7 @@ export default function Card(card: CardProps) {
                 <div className="flex text-fg-weak text-sm-regular items-center  p-[8px] justify-between">
                     <span className="max-w-[300px]">{card.description}</span>
 
-                    <Link href={`docs/${card.slug}/${card.headings?.slug}/${card.headings?.pages?.slug}`} target="_blank">
+                    <Link href={`docs/${card.slug}/${card.headings?.slug}/${card.headings?.pages?.slug}`}>
                         <Icon
                             variant={"secondary"}
                             icon={<ArrowUpRight size={30} />}

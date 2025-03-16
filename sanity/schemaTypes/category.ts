@@ -101,6 +101,12 @@ export const subheading = defineType({
       to: [{ type: 'heading' }],
     }),
     defineField({
+      name: 'icon',
+      type: 'image',
+      title: 'Icon',
+    }),
+      
+    defineField({
       name: 'pages',
       type: 'array',
       title: 'Pages',
@@ -196,6 +202,11 @@ export const page = defineType({
       to: [{ type: 'heading' }],
     }),
     defineField({
+      name: 'icon',
+      type: 'image',
+      title: 'Icon',
+    }), 
+    defineField({
       name: 'content',
       type: 'array',
       title: 'Content',
@@ -203,3 +214,6 @@ export const page = defineType({
     }),
   ],
 })
+
+
+

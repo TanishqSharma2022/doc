@@ -15,6 +15,8 @@ export default async function SidebarWrapper({slug}:{slug:string[]}) {
         notFound()
     }
 
+    console.log(data)
+
     return (
         <>
             <Sidebar data={data} />

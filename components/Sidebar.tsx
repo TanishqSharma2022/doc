@@ -12,7 +12,12 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { JSX, useState } from "react";
 import { motion } from 'framer-motion'
+import {
+    urlFor
 
+
+} from "@/sanity/lib/image";
+import Image from "next/image";
 interface Category {
     title: string;
     slug: string;
@@ -67,6 +72,7 @@ interface Page {
 interface Subheading {
     title: string;
     slug: string;
+    icon: string;
     pages: Page[];
 }
 
@@ -95,8 +101,12 @@ const SidebarLink: React.FC<{ link: string; page: Page; isActive: boolean }> = (
         className={`hover:bg-fill-subtle px-[8px] py-[8px] rounded-lg mb-[8px] flex items-center justify-between gap-2 label-sm-medium text-fg-strong ${isActive ? "bg-fill-subtle effects-shadow-5" : ""}`}
     >
         <div className={`flex items-center gap-2 ${isActive ? "text-fg-brand-default" : ""} `}>
-            <span className={` ${isActive ? "bg-fg-brand-default" : "bg-fill-default"}   w-[20px] h-[20px] flex items-center justify-center rounded-md  text-white p-[6px]`}>
-                {page.icon}
+            <span className={` ${isActive ? "bg-fg-brand-default" : "bg-fill-default"}   w-[20px] h-[20px] flex items-center justify-center rounded-md  text-white `}>
+                <Image
+                    width={100}
+                    height={100}
+                    alt="icon"
+                    src={urlFor(page.icon).width(20).url()} />
             </span>
             {page.title}
         </div>
@@ -108,12 +118,9 @@ const SidebarLink: React.FC<{ link: string; page: Page; isActive: boolean }> = (
 const SubheaingSidebarLink: React.FC<{ link: string; page: Page; isActive: boolean }> = ({ link, page, isActive }) => (
     <Link
         href={link}
-    className={`hover:bg-fill-subtle px-[8px] py-[8px]  border-l-2 flex items-center justify-between gap-2 label-sm-medium text-fg-strong ${isActive ? "border-fg-brand-default bg-fill-subtle effects-shadow-5" : ""}`}
+        className={`hover:bg-fill-subtle px-[8px] py-[8px]  border-l-2 flex items-center justify-between gap-2 label-sm-medium text-fg-strong ${isActive ? "border-fg-brand-default bg-fill-subtle effects-shadow-5" : ""}`}
     >
         <div className={`flex items-center gap-4 ${isActive ? "text-fg-brand-default" : ""} `}>
-            {/* {!sidebar && <span className={` ${isActive ? "bg-fg-brand-default" : "bg-fill-default"}   w-[20px] h-[20px] flex items-center justify-center rounded-md  text-white p-[6px]`}>
-                {page.icon}
-            </span>} */}
             {page.title}
             {<ArrowRight size={13} />}
         </div>
@@ -138,15 +145,30 @@ const SidebarEntries: React.FC<SidebarEntriesProps> = ({ data }) => {
                         return <SidebarLink key={page.slug} link={link} page={page} isActive={pathName === link} />;
                     })}
 
+
+
                     {heading.subheadings?.map((subheading) => (
                         <div key={subheading.slug}>
                             <button
                                 onClick={() => toggleSubheading(subheading.slug)}
                                 className="w-full flex justify-between items-center py-[8px] px-[8px] text-fg-strong label-sm-medium hover:bg-fill-subtle rounded-lg mb-[4px]"
                             >
-                                <span className="text-bg-brand-default">{subheading.title}</span>
+                                <span className={`flex items-center gap-2 `} >
+                                    <Image
+                                        width={20}
+                                        height={20}
+                                        alt="icon"
+                                        src={urlFor(subheading.icon).width(20).url()} />
+                                    {subheading.title}
+
+                                </span>
                                 {openSubheadings[subheading.slug] ? <ChevronDown size={13} /> : <ChevronRight size={13} />}
                             </button>
+
+
+
+
+
                             <motion.div
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: openSubheadings[subheading.slug] ? "auto" : 0, opacity: openSubheadings[subheading.slug] ? 1 : 0 }}

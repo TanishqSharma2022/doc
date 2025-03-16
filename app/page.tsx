@@ -1,11 +1,15 @@
 import Hero from "@/components/Hero/Hero";
 import Updates from "@/components/Hero/Updates";
+import { sanityFetch } from "@/sanity/lib/client";
+import { ChangelogQuery, RoadmapQuery } from "@/sanity/lib/queries";
+export default async function Home() {
 
-export default function Home() {
+  const roadMapData = await sanityFetch({query: RoadmapQuery});
+  const ChangelogData = await sanityFetch({query: ChangelogQuery});
   return (
     <>
       <Hero />
-      <Updates />
+      <Updates roadMapData={roadMapData} ChangelogData={ChangelogData} />
     </>
   );
 }

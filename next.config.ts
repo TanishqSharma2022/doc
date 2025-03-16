@@ -6,8 +6,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'picsum.photos',
-        // pathname: '/account123/**',
-        
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
       },
     ]
   }

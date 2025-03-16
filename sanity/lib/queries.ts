@@ -81,15 +81,18 @@ export const categoryWithFullStructureQuery = `
       pages[]->{
         _id,
         title,
+        icon,
         "slug": slug.current,
       },
        subheadings[]->{
           _id,
           title,
+          icon,
           "slug": slug.current,
           pages[]->{
         _id,
         title,
+        icon,
         "slug": slug.current,
         
       }
@@ -127,3 +130,22 @@ export const pageContentQuery = defineQuery(`
   },
   subheading
 }`);
+
+
+export const RoadmapQuery = defineQuery(`*[_type == "roadmap"] {
+  title,
+    description,
+    date,
+    image,
+    slug
+
+  }`)
+
+export const ChangelogQuery = defineQuery(`*[_type == "changelog"] {
+  title,
+    description,
+    date,
+    image,
+    slug
+
+  }`)

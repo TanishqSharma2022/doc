@@ -4,7 +4,6 @@ import { token } from "./token";
 import { draftMode } from 'next/headers';
 import { cache } from 'react';
 
-
 export const client = createClient({
   projectId,
   dataset,

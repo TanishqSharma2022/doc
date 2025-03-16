@@ -5,13 +5,17 @@ import { Activity, ChevronDown, ChevronUp, CircleFadingArrowUp, CircleFadingPlus
 import { useState } from "react";
 import { RoadmapModal } from "../RoadmapPopup";
 import Image from "next/image";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 interface RoadmapProps {
     title: string;
     description: string;
+    image: string;
+    slug: string;
+    date: string;
 }
 
-export default function Updates() {
+export default function Updates({ roadMapData, ChangelogData }: { roadMapData: RoadmapProps[], ChangelogData: RoadmapProps[] }) {
     return (
         <div className="px-[49px] min-h-screen">
             <div className="flex items-center border border-border-subtle border-t-0 justify-center flex-col py-[96px] px-[20px]">
@@ -20,14 +24,38 @@ export default function Updates() {
                 </h1>
                 <h1 className="display-md-bold text-fg-strong font-inter mt-[12px]">Latest and upcoming capabilities</h1>
                 <div className="flex items-center justify-center mt-[48px] gap-4">
-                    <button className="flex items-center justify-center gap-2 rounded-md py-[6px] px-[12px] border border-border-subtle bg-fill-highlight">
-                        <CircleFadingArrowUp size={20} /> Roadmap
-                    </button>
-                    <button className="flex items-center justify-center gap-2 rounded-md py-[6px] px-[12px] border border-border-subtle">
-                        <CircleFadingArrowUp size={20} /> Changelog
-                    </button>
+
+                    <Tabs defaultValue="account">
+                        <TabsList className="mx-auto">
+                            <TabsTrigger className="flex items-center justify-center gap-2 rounded-md py-[6px] px-[12px] border border-border-subtle" value="account">
+                                {/* <button className="flex items-center justify-center gap-2 rounded-md py-[6px] px-[12px] border border-border-subtle bg-fill-highlight"> */}
+                                <CircleFadingArrowUp size={20} /> Roadmap
+                                {/* </button> */}
+
+                            </TabsTrigger>
+                            <TabsTrigger className="flex items-center justify-center gap-2 rounded-md py-[6px] px-[12px] border border-border-subtle" value="password">
+                                {/* <button > */}
+                                <CircleFadingArrowUp size={20} /> Changelog
+                                {/* </button> */}
+                            </TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="account">
+                            <CardStack cards={roadMapData} />
+
+                            .</TabsContent>
+                        <TabsContent className=" mx-auto relative" value="password">
+                            <CardStack cards={roadMapData} />
+                            {JSON.stringify(ChangelogData)}
+                        </TabsContent>
+                    </Tabs>
+
+
+
+
+
                 </div>
-                <CardStack />
+                {/* <CardStack /> */}
+
             </div>
         </div>
     );
@@ -67,20 +95,14 @@ const Card: React.FC<CardProps> = ({ data, index }) => {
     );
 };
 
-const CardStack: React.FC = () => {
+const CardStack = ({ cards }: { cards: RoadmapProps[] }) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const cards: RoadmapProps[] = [
-        { title: "Design System", description: "Comprehensive component library with consistent styling" },
-        { title: "Performance", description: "Optimized for speed and efficiency" },
-        { title: "Configuration", description: "Easily customizable settings and options" },
-        { title: "Real-time Updates", description: "Stay synchronized with latest changes" },
-    ];
 
     const buttonPositionY = isOpen ? `${cards.length * 250}%` : "0";
 
     return (
-        <div className={`${isOpen ? "min-h-[1200px]" : "min-h-[600px]"} mx-auto w-full items-center justify-center p-8`}>
+        <div className={`${isOpen ? "min-h-[1200px]" : "min-h-[600px]"}  mx-auto w-full items-center justify-center `}>
             <div className="w-full mx-auto">
                 <Card data={cards[0]} index={0} />
                 <div className="relative h-[300px] perspective">
